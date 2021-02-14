@@ -6,6 +6,9 @@ class MoodCalculator
   end
 
   def run track_list, commit_list
+    @grouping = {}
+    @commit_index = 0
+    @track_index = 0
     while has_tracks track_list
       track = track_list[@track_index]
       process_track track, commit_list
