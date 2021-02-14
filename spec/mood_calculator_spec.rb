@@ -82,4 +82,25 @@ describe MoodCalculator do
                 [ commit(1,@stamp)]
     ).to eq [ count(1,3),count(2,2),count(3,1)]
   end
+
+  it "counts if called twice" do
+    expect(
+      @calc.run [
+                  track(1,@stamp),
+                  track(2,@midway),
+                  track(3,@limit+1.minute),
+                ],
+                [commit(1,@stamp)]
+    ).to eq [count(1,1), count(2,1), count(3,1)]
+
+    expect(
+      @calc.run [
+                  track(4,@stamp),
+                  track(5,@midway),
+                  track(6,@limit+1.minute),
+                ],
+                [commit(1,@stamp)]
+    ).to eq [count(4,1), count(5,1), count(6,1)]
+  end
+
 end
