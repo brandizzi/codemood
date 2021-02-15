@@ -1,3 +1,5 @@
+require 'octokit'
+
 class GithubCollector
   def initialize user
     @user = user
